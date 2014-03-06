@@ -1,0 +1,34 @@
+<%= form_for @payment do |f| %>
+	<div>
+		<%= f.label :credit_count %>
+		<%= f.select :credit_count, options_for_select([["1 minuta - 1 USD", 1],["2 minuty - 2 USD", 2],["3 minuty - 3 USD", 3]]) %>
+	</div>
+
+	<%= fields_for :credit_card, @credit_card do |ff| %>
+		<div>
+			<%= ff.label :first_name %>
+			<%= ff.text_field :first_name %>
+		</div>
+		<div>
+			<%= ff.label :last_name %>
+			<%= ff.text_field :last_name %>
+		</div>
+		<div>
+			<%= ff.label :number %>
+			<%= ff.text_field :number %>
+		</div>
+		<div>
+			<%= ff.label :month %>
+			<%= ff.text_field :month %>
+		</div>
+		<div>
+			<%= ff.label :year %>
+			<%= ff.text_field :year %>
+		</div>
+		<div>
+			<%= ff.label :verification_value %>
+			<%= ff.text_field :verification_value %>
+		</div>
+	<% end %>
+	<%= f.submit %>
+<% end %> 

@@ -1,0 +1,49 @@
+
+<p><%= locking_status_information %></p>
+<p><%= proximity_information %></p>
+
+
+<h1>Control panel</h1>
+<div id="primarycontainer">
+
+<%= robot_control_button "forward" %>
+<%= robot_control_button "left" %>
+
+
+<%= form_tag robot_path, method: :put do %>
+<%= hidden_field_tag 'cmd', "backward" %>
+	<%= submit_tag 'backward' %>
+<% end %>
+
+<%= form_tag robot_path, method: :put do %>
+	<%= hidden_field_tag 'cmd', "right" %>
+	<%= submit_tag 'right' %>
+<% end %>
+<%= form_tag robot_path, method: :put do %>
+	<%= hidden_field_tag 'cmd', "compile" %>
+	<%= submit_tag 'compile' %>
+<% end %>
+<%= form_tag robot_path, method: :put do %>
+	<%= hidden_field_tag 'cmd', "run" %>
+	<%= submit_tag 'run' %>
+<% end %>
+<%= form_tag robot_path, method: :put do %>
+	<%= hidden_field_tag 'cmd', "slow_forward" %>
+	<%= submit_tag 'slow_forward' %>
+<% end %>
+<%= form_tag robot_path, method: :put do %>
+	<%= hidden_field_tag 'cmd', "slow_backward" %>
+	<%= submit_tag 'slow_backward' %>
+<% end %>
+<%= form_tag robot_path, method: :put do %>
+	<%= hidden_field_tag 'cmd', "attack" %>
+	<%= submit_tag 'attack' %>
+<% end %>
+
+</div>
+<div class="secondarycontent">
+<%= form_tag robot_path, method: :put do %>
+	<%= text_area_tag 'cmd', "" %><br>
+	<%= submit_tag 'go' %>
+<% end %>
+</div>

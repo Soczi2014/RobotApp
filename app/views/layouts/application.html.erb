@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RobotApp</title>
+  <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="upbg"></div>
+<div id="outer">
+	<div id="header">
+		<div id="headercontent">
+			<h1>Robot APP</h1>
+			<h2>Simple control panel</h2>
+		</div>
+	</div>
+	<div id="headerpic"></div>
+	<div id="menu">
+		<ul>
+			<li><%= link_to 'Robot panel', robot_path %></li>
+			
+		</ul>
+	</div>
+	<div id="menubottom">
+<% if notice %>
+  <p class="alert alert-notice"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-error"><%= alert %></p>
+<% end %>
+
+<p class="navbar-text pull-right">
+<% if user_signed_in? %>
+  Logged in as <strong><%= current_user.email %></strong>.&nbsp;&nbsp;&nbsp; Your credit: <strong><%= current_user.credit_count %></strong>&nbsp;&nbsp;&nbsp;
+
+<%= link_to 'Make payment', new_payment_path, :class => 'navbar-link' %> |
+<%= link_to 'History', payments_path, :class => 'navbar-link' %> |
+  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+
+<% else %>
+  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+<% end %>
+</p>
+</div>
+<div id="content">
+<%= yield %>
+</div>
+<div id="footer">
+			<div class="right">&copy; Robots </div>
+	</div>
+</div>
+</body>
+</html>

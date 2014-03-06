@@ -1,0 +1,22 @@
+
+
+<h2>History of payments</h2>
+<br>
+<table class="gridtable">
+  <tr>
+    <th>ID</th>
+    <th>Credit count</th>
+    <th>Amount</th>
+    <th>Date</th>
+    
+  </tr>
+
+<% @payments.each do |p| %>
+  <tr>
+    <td><%= p.id %></td>
+    <td><%= p.credit_count %></td>
+    <td><%= p.amount %></td>
+    <td><%= p.updated_at.strftime "%Y-%m-%d %H:00:00" %></td>
+  </tr>
+<% end %>
+</table>
